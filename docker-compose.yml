@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:latest
+    container_name: bd_container
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: instituicoes_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./data.sql:/docker-entrypoint-initdb.d/data.sql
+    networks:
+      - instituicoes_network
+
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile.django
+    container_name: django_container
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    networks:
+      - instituicoes_network
+
+volumes:
+  db_data:
+
+networks:
+  instituicoes_network:
+    driver: bridge

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <div class="container">
+      <h1 class="title">API de busca de bancos</h1>
+
+      <!-- Formulário para pesquisar banco por código de compensação -->
+      <form method="get" action="" class="search-form">
+          <p class="message">Insira o código de compensação que você deseja!</p>
+          <input type="text" id="codigocompensacao" name="codigocompensacao" class="search-input" placeholder="Exemplo: 757">
+          <button type="submit" class="search-button">Pesquisar</button>
+      </form>
+
+      <!-- Detalhes do banco -->
+      {% if banco %}
+          <div class="details">
+              <h2 class="details-title">Detalhes do Banco</h2>
+              <p><strong>Código de Compensação:</strong> {{ banco.codigocompensacao }}</p>
+              <p><strong>Nome do Banco:</strong> {{ banco.nomeinstituicao }}</p>
+          </div>
+      {% endif %}
+
+      <!-- Mensagem de erro -->
+      {% if mensagem %}
+          <p class="error">{{ mensagem }}</p>
+      {% endif %}
+
+      <!-- Lista de bancos -->
+      <ul class="bank-list">
+          {% for banco in bancos %}
+              <li class="bank-item">
+                  <strong class="bank-code">Código de Compensação:</strong> {{ banco.codigocompensacao }}<br>
+                  <strong class="bank-name">Nome do Banco:</strong> {{ banco.nomeinstituicao }}
+              </li>
+          {% endfor %}
+      </ul>
+
+      <!-- Navegação de página -->
+      {% if total_pages > 1 %}
+          <div class="pagination">
+              {% if current_page > 1 %}
+                  <a href="?page={{ current_page|add:"-1" }}" class="page-link">Anterior</a>
+              {% endif %}
+              <span class="page-info">Página {{ current_page }} de {{ total_pages }}</span>
+              {% if current_page < total_pages %}
+                  <a href="?page={{ current_page|add:"1" }}" class="page-link">Próxima</a>
+              {% endif %}
+          </div>
+      {% endif %}
+  </div>
+</body>
+</html>
