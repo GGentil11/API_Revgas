@@ -10,14 +10,12 @@
   <div class="container">
       <h1 class="title">API de busca de bancos</h1>
 
-      <!-- Formulário para pesquisar banco por código de compensação -->
       <form method="get" action="" class="search-form">
           <p class="message">Insira o código de compensação que você deseja!</p>
           <input type="text" id="codigocompensacao" name="codigocompensacao" class="search-input" placeholder="Exemplo: 757">
           <button type="submit" class="search-button">Pesquisar</button>
       </form>
 
-      <!-- Detalhes do banco -->
       {% if banco %}
           <div class="details">
               <h2 class="details-title">Detalhes do Banco</h2>
@@ -26,12 +24,10 @@
           </div>
       {% endif %}
 
-      <!-- Mensagem de erro -->
       {% if mensagem %}
           <p class="error">{{ mensagem }}</p>
       {% endif %}
 
-      <!-- Lista de bancos -->
       <ul class="bank-list">
           {% for banco in bancos %}
               <li class="bank-item">
@@ -41,7 +37,6 @@
           {% endfor %}
       </ul>
 
-      <!-- Navegação de página -->
       {% if total_pages > 1 %}
           <div class="pagination">
               {% if current_page > 1 %}
