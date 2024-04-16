@@ -10,6 +10,7 @@ Apesar de estar em produção, deixarei o modo de DEBUG ativado, caso notem algu
 Erros conhecidos:
   - Ao realizar o "docker-compose up --build", há uma chance do Django carregar antes do MySql, quando isso acontecer, basta esperar o "docker-compose up --build" terminar de carregar, parar o terminal (pode ser com o CRTL + C) e executar "docker-compose up";
   - Ao realizar o "docker-compose up --build", há uma chance de já exitir contêineres com os mesmos nomes que o da API, basta parar o terminal (pode ser com o CRTL + C) e executar "docker rm <nome-do-contêiner>". Após isso, utilize "docker-compose up --build";
+  - Em razão do modo DEBUG estar ativado, a página do erro 404 será a padrão do Django;
   - A página do administrador não está funcionando, peço que evite acessá-la, em breve consiguirei resolver.
 
 Aceito sugestões, dicas e feedbacks!
