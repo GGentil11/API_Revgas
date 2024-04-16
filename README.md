@@ -4,7 +4,7 @@ O código backend e frontend foram feitos utilizando Python e o Web Framework Dj
 Para utilizar essa API, será necessário execultar os seguintes passos no terminal:
   - Clone o repositório no diretório desejado utilizando o "git clone https://github.com/GGentil11/API_Revgas/" sem as aspas.
   - Construa a aplicação utilizando "docker-compose up --build" sem as aspas.
-Após realizar esses passos, surgirá um link no terminal contendo a URL para o acesso à API
+Após realizar esses passos, surgirá um link no terminal contendo a URL para o acesso a API
 
 Apesar de estar em produção, deixarei o modo de DEBUG ativado, caso notem algum erro, peço que me enviem para que eu consiga aprender e corrigir.<br />
 Erros conhecidos:
